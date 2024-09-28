@@ -2,9 +2,13 @@
 #define FRACTOL_H
 
 #include <stdio.h>
-#include "libft/libft.h"
 #include <math.h>
-#include "minilibx-linux/mlx.h"
+# include <limits.h>
+# include <string.h>
+# include <ctype.h>
+# include <stdlib.h>
+# include <unistd.h>
+#include "mlx.h"
 
 #define ERROR_MESSAGE "Arguments must be:\n\t./fractol mandelbrot\n\t./fractol julia <real> <imaginary>\n"
 
@@ -52,5 +56,9 @@ typedef struct s_fractol
 }	t_fractol;
 
 void fr_init(t_fractol *fr, char **argv);
+void render(t_fractol *fr);
+size_t	ft_strlen(const char *str);
+void	ft_putstr_fd(char *s, int fd);
+int	ft_strcmp(char *s1, char *s2);
 
 #endif

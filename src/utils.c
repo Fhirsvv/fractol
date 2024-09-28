@@ -1,38 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecortes- <ecortes-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 15:38:49 by ecortes-          #+#    #+#             */
-/*   Updated: 2023/12/20 18:52:21 by ecortes-         ###   ########.fr       */
+/*   Created: 2024/09/28 18:40:14 by ecortes-          #+#    #+#             */
+/*   Updated: 2024/09/28 18:43:42 by ecortes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/fractol.h"
 
-void	*ft_calloc(size_t num, size_t size)
+size_t	ft_strlen(const char *str)
 {
-	char	*ptr;
 	size_t	i;
 
-	if (num >= SIZE_MAX || size >= SIZE_MAX)
-		return (NULL);
-	ptr = malloc(num * size);
-	if (ptr == NULL)
+	i = 0;
+	if (!str[0])
+		return (-1);
+	while (str[i])
 	{
-		free(ptr);
-		return (NULL);
+		i++;
 	}
-	if (ptr != NULL)
+	return (i);
+}
+void	ft_putstr_fd(char *s, int fd)
+{
+    write(fd, s, ft_strlen(s));
+}
+
+int	ft_strcmp(char *s1, char *s2)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (s1[i] && s1[i] == s2[i])
 	{
-		i = 0;
-		while (i < num * size)
-		{
-			ptr[i] = 0;
-			i++;
-		}
+		i++;
 	}
-	return (ptr);
+	return ((int)(unsigned char)s1[i] - (int)(unsigned char)s2[i]);
 }

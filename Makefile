@@ -6,40 +6,49 @@
 #    By: ecortes- <ecortes-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/28 16:26:21 by ecortes-          #+#    #+#              #
-#    Updated: 2024/09/28 17:20:02 by ecortes-         ###   ########.fr        #
+#    Updated: 2024/09/28 18:54:11 by ecortes-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+# Compiler
+CC = gcc
+
+# Compiler flags
+CFLAGS = -Iinclude -Iminilibx-linux -Wall -Wextra -Werror
+
+# Library flags
+LDFLAGS = -Lminilibx-linux -lmlx_Linux -lX11 -lXext
+
+# Source files
+SRC = src/main.c src/inti.c src/render.c src/utils.c
+
+# Object files (replace .c with .o)
+OBJ = $(SRC:.c=.o)
+
+# Output executable name
 NAME = fractol
 
-SRC_DIR = ./src
-SRC = main.c
-
-OBJS = $(ADDPREFIX $(SRC_DIR)/, $(SRC:=.o))
-
-CC = gcc
-CFLAGS = -Wall -Werror -Wextra
-RM = rm -rf
-
-LIBFT_DIR = ./libft/
-LIBFT_A = libft.a
-LIBFT = -L$(LIBFT_DIR) $(LIBFT_DIR)$(LIBFT_A)
-
-MLX_PATH = minilibx-linux/
-MINILIBX:= -Lminilibx-linux -lmlx-linux -lXext -lX11 -lm -lz
-
+# Default target
 all: $(NAME)
-$(NAME): $(OBJS)	
-	@make  -C $(LIBFT_DIR)	
-	@gcc $(CFLAGS) $(OBJS) $(MINILIBX) $(LIBFT) -o $(NAME)
+
+# Linking the executable
+$(NAME): $(OBJ)
+	$(CC) -o $@ $^ $(LDFLAGS)
+
+# Compiling each .c file into .o files
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Clean up object files and executable
 clean:
-	$(RM) $(OBJS) $(LIBFT_A)
+	rm -f $(OBJ)
 
-fclean: clean	
-	@$(RM) $(NAME) $(B_NAME) $(OBJS)
-	@make -C $(LIBFT_DIR) fclean	
+fclean: clean
+	rm -f $(NAME)
 
-re: fclean	
-	@make all
+# Rebuild the project
+re: fclean all
 
-.PHONY: all  clean fclean re
+# Phony targets
+.PHONY: all clean fclean re
+
