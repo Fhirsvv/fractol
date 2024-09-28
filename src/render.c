@@ -6,7 +6,7 @@
 /*   By: ecortes- <ecortes-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 17:21:55 by ecortes-          #+#    #+#             */
-/*   Updated: 2024/09/28 18:16:27 by ecortes-         ###   ########.fr       */
+/*   Updated: 2024/09/28 18:20:05 by ecortes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ inline double scale(double unscaledNum, double new_min, double new_max, double o
             / (old_max - old_min) + new_min;
 }
 
-void handle_pixel(int x, int y, t_fractol *fr)
+static void handle_pixel(int x, int y, t_fractol *fr)
 {
 	t_complex z;
 	t_complex c;
@@ -86,4 +86,5 @@ void render(t_fractol *fr)
             handle_pixel(x, y, fr);
         }
     }
+	mlx_put_image_to_window(fr->mlx_conn, fr->mlx_window, fr->img.img_ptr, 0, 0);
 }
