@@ -36,4 +36,6 @@ typedef struct s_fractol
 
 }	t_fractol;
 
+void fr_init(t_fractol *fr, char **argv);
+
 #endif

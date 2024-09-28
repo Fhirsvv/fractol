@@ -6,7 +6,7 @@
 #    By: ecortes- <ecortes-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/28 16:26:21 by ecortes-          #+#    #+#              #
-#    Updated: 2024/09/28 17:00:48 by ecortes-         ###   ########.fr        #
+#    Updated: 2024/09/28 17:20:02 by ecortes-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ LIBFT_A = libft.a
 LIBFT = -L$(LIBFT_DIR) $(LIBFT_DIR)$(LIBFT_A)
 
 MLX_PATH = minilibx-linux/
-MINILIBX:= -Lminilibx-linux -lminilibx-linux -L/usr/lib -Iminilibx-linux -lXext -lX11 -lm -lz
+MINILIBX:= -Lminilibx-linux -lmlx-linux -lXext -lX11 -lm -lz
 
 all: $(NAME)
 $(NAME): $(OBJS)	
