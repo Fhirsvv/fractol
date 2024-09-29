@@ -8,13 +8,14 @@
 # include <ctype.h>
 # include <stdlib.h>
 # include <unistd.h>
+#include <X11/X.h>
 #include "mlx.h"
 
 #define ERROR_MESSAGE "Arguments must be:\n\t./fractol mandelbrot\n\t./fractol julia <real> <imaginary>\n"
 
 #define WIDTH 800
 #define HEIGHT 800
-#define ITERATIONS 42
+#define ITERATIONS_DEF 42
 
 #define COLOR_BLACK         (0x000000) // Black
 #define COLOR_WHITE         (0xFFFFFF) // White
@@ -27,14 +28,6 @@
 #define COLOR_PSYCHEDLIC_ORANGE     (0xFF7F00) // Bright Orange
 #define COLOR_PSYCHEDLIC_PURPLE     (0x7F00FF) // Bright Purple
 #define COLOR_PSYCHEDLIC_PINK       (0xFF1F7F) // Bright Pink
-
-#define KeyPress 2
-#define ButtonPress 4
-#define DestroyNotify 17
-
-#define KeyPressMask (1L<<0)
-#define ButtonPressMask (1L<<2)
-#define KeyPressMask (1L<<0)
 
 
 
@@ -60,14 +53,22 @@ typedef struct s_fractol
 	void *mlx_window;
 	t_img img;
 
+	size_t ITERATIONS;
+	double shiftx;
+	double shifty;
+
 	//char *title;
 
 }	t_fractol;
 
 void fr_init(t_fractol *fr, char **argv);
+
 void render(t_fractol *fr);
+
 size_t	ft_strlen(const char *str);
 void	ft_putstr_fd(char *s, int fd);
 int	ft_strcmp(char *s1, char *s2);
+
+int key_handle(int keycode, t_fractol *fr);
 
 #endif
