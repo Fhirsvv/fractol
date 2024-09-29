@@ -16,7 +16,6 @@
 #define HEIGHT 800
 #define ITERATIONS 42
 
-
 #define COLOR_BLACK         (0x000000) // Black
 #define COLOR_WHITE         (0xFFFFFF) // White
 #define COLOR_PSYCHEDLIC_RED        (0xFF1F1F) // Bright Red
@@ -28,6 +27,16 @@
 #define COLOR_PSYCHEDLIC_ORANGE     (0xFF7F00) // Bright Orange
 #define COLOR_PSYCHEDLIC_PURPLE     (0x7F00FF) // Bright Purple
 #define COLOR_PSYCHEDLIC_PINK       (0xFF1F7F) // Bright Pink
+
+#define KeyPress 2
+#define ButtonPress 4
+#define DestroyNotify 17
+
+#define KeyPressMask (1L<<0)
+#define ButtonPressMask (1L<<2)
+#define KeyPressMask (1L<<0)
+
+
 
 typedef struct s_complex
 {

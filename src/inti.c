@@ -6,11 +6,20 @@
 /*   By: ecortes- <ecortes-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 16:42:12 by ecortes-          #+#    #+#             */
-/*   Updated: 2024/09/28 16:56:59 by ecortes-         ###   ########.fr       */
+/*   Updated: 2024/09/29 16:08:14 by ecortes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
+/*
+//follow the documentation:
+//https://harm-smits.github.io/42docs/libs/minilibx/events.html#hooking-into-events
+static void events_init(t_fractol *fr)
+{
+    mlx_hook(fr->mlx_window, KeyPress, KeyPressMask, &key_handle, fr);
+    mlx_hook(fr->mlx_window, BottonPress, BottonPressMask, &mouse_handle, fr);
+    mlx_hook(fr->mlx_window, DestroyNotify, StructureNotifyMask, &close_handle, fr);
+}*/
 
 static void malloc_error()
 {
@@ -41,4 +50,5 @@ void fr_init(t_fractol *fr, char **argv)
     }
     fr->img.pixel_ptr = mlx_get_data_addr(fr->img.img_ptr, &fr->img.bitperpixel,
                                             &fr->img.line_len, &fr->img.endian);
+   // events_init(fr);
 }
