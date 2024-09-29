@@ -6,7 +6,7 @@
 /*   By: ecortes- <ecortes-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 17:21:55 by ecortes-          #+#    #+#             */
-/*   Updated: 2024/09/28 18:55:39 by ecortes-         ###   ########.fr       */
+/*   Updated: 2024/09/29 14:11:04 by ecortes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,24 +53,26 @@ static void handle_pixel(int x, int y, t_fractol *fr)
 	int i;
 	int color;
 
-	i = -1;
+	i = 0;
 	z.real = 0.0;
 	z.imag = 0.0;
 
 	c.real = scale(x, -2, +2, 0, 799);
 	c.imag = scale(y, +2, -2, 0, 799);
 
-	while(++i)
+	while(i < ITERATIONS)
 	{
 		z = ft_mandelbrot(z, c);
 
-		if((ft_abs(z.imag) >= 2.f || ft_abs(z.real) >= 2.f) || i < ITERATIONS)
+		if((ft_abs(z.imag) >= 2.f || ft_abs(z.real) >= 2.f))
 		{
 			color = scale(i, COLOR_BLACK, COLOR_WHITE, 0, ITERATIONS);
 			my_pixel_put(x, y, &fr->img, color);
 			return;
 		}
+		++i;
 	}
+	my_pixel_put(x, y, &fr->img, COLOR_BLACK);
 }
 void render(t_fractol *fr)
 {
