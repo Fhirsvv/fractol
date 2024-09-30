@@ -59,6 +59,7 @@ typedef struct s_fractol
 	size_t ITERATIONS;
 	double shiftx;
 	double shifty;
+	double scale;
 
 	//char *title;
 

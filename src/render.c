@@ -6,7 +6,7 @@
 /*   By: ecortes- <ecortes-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 17:21:55 by ecortes-          #+#    #+#             */
-/*   Updated: 2024/09/30 10:30:59 by ecortes-         ###   ########.fr       */
+/*   Updated: 2024/09/30 12:06:16 by ecortes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,6 @@ static void my_pixel_put(int x, int y, t_img *img, int color)
 	*(unsigned int *)(img->pixel_ptr + offset) = color;
 }
 
-static inline double ft_abs(double n)
-{
-	return (n * (-1.f * (n < 0)) + (n * (n >= 0)));
-}
 // z=z^2+c=a^2 - b^2 + c, 2 * a * b + c
 static inline	t_complex ft_mandelbrot(t_complex z, t_complex c)
 {
@@ -63,8 +59,8 @@ static void handle_pixel(int x, int y, t_fractol *fr)
 	z.real = 0.0;
 	z.imag = 0.0;
 
-	c.real = scale(x, -2, +2, 799) + fr->shiftx;
-	c.imag = scale(y, +2, -2, 799) + fr->shifty;
+	c.real = scale(x, -fr->scale, fr->scale, 799) + fr->shiftx;
+	c.imag = scale(y, fr->scale, -fr->scale, 799) + fr->shifty;
 
 	while(i < fr->ITERATIONS)
 	{

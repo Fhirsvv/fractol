@@ -6,7 +6,7 @@
 /*   By: ecortes- <ecortes-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 16:42:12 by ecortes-          #+#    #+#             */
-/*   Updated: 2024/09/29 23:16:31 by ecortes-         ###   ########.fr       */
+/*   Updated: 2024/09/30 11:54:52 by ecortes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void data_init(t_fractol *fr)
     fr->ITERATIONS = ITERATIONS_DEF;
     fr->shiftx = 0.f;
     fr->shifty = 0.f;
+    fr->scale = 2.f;
 }
 
 static void malloc_error()
