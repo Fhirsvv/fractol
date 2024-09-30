@@ -6,7 +6,7 @@
 /*   By: ecortes- <ecortes-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 14:21:28 by ecortes-          #+#    #+#             */
-/*   Updated: 2024/09/30 12:01:54 by ecortes-         ###   ########.fr       */
+/*   Updated: 2024/09/30 18:37:15 by ecortes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,13 @@ int key_handle(int keycode, t_fractol *fr)
 	else if(keycode == XK_plus)
 		fr->ITERATIONS += 10;
 	else if(keycode == XK_Left)
-		fr->shiftx -= 0.5 * fr->scale;
+		fr->shiftx -= 0.4 * fr->scale;
 	else if(keycode == XK_Right)
-		fr->shiftx += 0.5 * fr->scale;
+		fr->shiftx += 0.4 * fr->scale;
 	else if(keycode == XK_Up)
-		fr->shifty += 0.5 * fr->scale;
+		fr->shifty += 0.4 * fr->scale;
 	else if(keycode == XK_Down)
-		fr->shifty -= 0.5 * fr->scale;
-
-
-	else if(keycode == XK_a)
-		fr->scale *= 1.05;
-	else if(keycode == XK_s)
-		fr->scale *= 0.95;
+		fr->shifty -= 0.4 * fr->scale;
 
 	render(fr);
 	return (0);
@@ -55,6 +49,21 @@ int close_handle(t_fractol *fr)
 	mlx_destroy_window(fr->mlx_conn, fr->mlx_window);
 	mlx_destroy_display(fr->mlx_conn);
 	free(fr->mlx_conn);
+	free(fr->color_table);
 	exit(EXIT_SUCCESS);
+	return (0);
+}
+
+/*zoom in-up scroll == 5
+zoom out-down scroll == 4*/
+int mouse_handle(int button, int x, int y, t_fractol *fr)
+{
+	if(button == Button5)
+		fr->scale *= 1.05;
+	else if(button == Button4)
+		fr->scale *= 0.95;
+	(void)x;
+	(void)y;
+	render(fr);
 	return (0);
 }

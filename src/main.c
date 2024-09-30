@@ -6,7 +6,7 @@
 /*   By: ecortes- <ecortes-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 14:51:12 by edu               #+#    #+#             */
-/*   Updated: 2024/09/28 18:54:37 by ecortes-         ###   ########.fr       */
+/*   Updated: 2024/09/30 18:11:55 by ecortes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@ int main(int argc, char **argv)
 		render(&fr);
 		mlx_loop(fr.mlx_conn); //loop event (key, mouse,..)
 	}
+	/*else if()
+	{
+		
+	}*/
 	else
 	{
 		ft_putstr_fd(ERROR_MESSAGE, STDERR_FILENO);

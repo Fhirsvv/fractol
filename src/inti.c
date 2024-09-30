@@ -6,7 +6,7 @@
 /*   By: ecortes- <ecortes-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 16:42:12 by ecortes-          #+#    #+#             */
-/*   Updated: 2024/09/30 11:54:52 by ecortes-         ###   ########.fr       */
+/*   Updated: 2024/09/30 18:51:04 by ecortes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 static void events_init(t_fractol *fr)
 {
     mlx_hook(fr->mlx_window, KeyPress, KeyPressMask, &key_handle, fr);
-   // mlx_hook(fr->mlx_window, ButtonPress, ButtonPressMask, &mouse_handle, fr);
+    mlx_hook(fr->mlx_window, ButtonPress, ButtonPressMask, &mouse_handle, fr);
     mlx_hook(fr->mlx_window, DestroyNotify, StructureNotifyMask, &close_handle, fr);
 }
 
@@ -27,6 +27,8 @@ void data_init(t_fractol *fr)
     fr->shiftx = 0.f;
     fr->shifty = 0.f;
     fr->scale = 2.f;
+	fr->prev_iterations = -1;
+	fr->color_table = NULL;
 }
 
 static void malloc_error()
@@ -37,7 +39,6 @@ static void malloc_error()
 
 void fr_init(t_fractol *fr, char **argv)
 {
-    //fr->title = argv[1];
     fr->mlx_conn = mlx_init();
     if(!fr->mlx_conn)
         malloc_error();
@@ -60,4 +61,21 @@ void fr_init(t_fractol *fr, char **argv)
                                             &fr->img.line_len, &fr->img.endian);
     data_init(fr);
     events_init(fr);
+}
+
+void	calculate_colors(t_fractol *fr)
+{
+	int	i;
+
+	i = -1;
+	if(fr->prev_iterations == fr->ITERATIONS)
+		return;
+	fr->prev_iterations = fr->ITERATIONS;
+	if(fr->color_table)
+		free(fr->color_table);
+	fr->color_table = malloc(fr->ITERATIONS * sizeof(int));
+	if (!fr->color_table)
+		malloc_error();
+	while (++i < fr->ITERATIONS)
+		fr->color_table[i] = scale2(i, COLOR_PSYCHEDLIC_PURPLE, COLOR_WHITE, fr->ITERATIONS);
 }

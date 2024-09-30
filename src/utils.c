@@ -6,7 +6,7 @@
 /*   By: ecortes- <ecortes-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 18:40:14 by ecortes-          #+#    #+#             */
-/*   Updated: 2024/09/28 18:43:42 by ecortes-         ###   ########.fr       */
+/*   Updated: 2024/09/30 18:50:32 by ecortes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,9 @@ int	ft_strcmp(char *s1, char *s2)
 		i++;
 	}
 	return ((int)(unsigned char)s1[i] - (int)(unsigned char)s2[i]);
+}
+double	scale2(double unscaledNum, double new_min, double new_max, double old_max)
+{
+	return (new_max - new_min) * (unscaledNum - OLD_MIN)
+			/ (old_max - OLD_MIN) + new_min;
 }
