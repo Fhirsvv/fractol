@@ -64,6 +64,9 @@ typedef struct s_fractol
 	double shifty;
 	double scale;
 
+	double julia_real;
+	double julia_img;
+	int is_julia;
 	int *color_table;
 	int prev_iterations;
 	//char *title;
@@ -73,6 +76,7 @@ typedef struct s_fractol
 //---INTI---
 void fr_init(t_fractol *fr, char **argv);
 void calculate_colors(t_fractol *fr);
+double atoi_double(char *s);
 
 //---RENDER---
 void render(t_fractol *fr);

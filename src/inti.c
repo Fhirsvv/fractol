@@ -6,7 +6,7 @@
 /*   By: ecortes- <ecortes-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 16:42:12 by ecortes-          #+#    #+#             */
-/*   Updated: 2024/09/30 18:51:04 by ecortes-         ###   ########.fr       */
+/*   Updated: 2024/10/02 12:44:54 by ecortes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,11 @@ void data_init(t_fractol *fr)
     fr->scale = 2.f;
 	fr->prev_iterations = -1;
 	fr->color_table = NULL;
+    fr->is_julia = 0;
+    fr->julia_img = 0;
+    fr->julia_real = 0;
 }
+
 
 static void malloc_error()
 {

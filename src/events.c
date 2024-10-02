@@ -6,7 +6,7 @@
 /*   By: ecortes- <ecortes-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 14:21:28 by ecortes-          #+#    #+#             */
-/*   Updated: 2024/09/30 18:37:15 by ecortes-         ###   ########.fr       */
+/*   Updated: 2024/10/02 12:34:38 by ecortes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ int key_handle(int keycode, t_fractol *fr)
 	else if(keycode == XK_plus)
 		fr->ITERATIONS += 10;
 	else if(keycode == XK_Left)
-		fr->shiftx -= 0.4 * fr->scale;
+		fr->shiftx -= 0.3 * fr->scale;
 	else if(keycode == XK_Right)
-		fr->shiftx += 0.4 * fr->scale;
+		fr->shiftx += 0.3 * fr->scale;
 	else if(keycode == XK_Up)
-		fr->shifty += 0.4 * fr->scale;
+		fr->shifty += 0.3 * fr->scale;
 	else if(keycode == XK_Down)
-		fr->shifty -= 0.4 * fr->scale;
+		fr->shifty -= 0.3 * fr->scale;
 
 	render(fr);
 	return (0);
