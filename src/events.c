@@ -6,37 +6,33 @@
 /*   By: ecortes- <ecortes-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 14:21:28 by ecortes-          #+#    #+#             */
-/*   Updated: 2024/10/04 17:02:38 by ecortes-         ###   ########.fr       */
+/*   Updated: 2024/10/04 17:24:20 by ecortes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
-
-
 //follow the documentation:
-//https://harm-smits.github.io/42docs/libs/minilibx/events.html#hooking-into-events
-
-
+//https://harm-smits.github.io/42docs/libs/minilibx/events.html
 //Prototype of event functions
 //las teclas https://www.cl.cam.ac.uk/~mgk25/ucs/keysymdef.h
 int	key_handle(int keycode, t_fractol *fr)
 {
-	if(keycode == XK_Escape)
+	if (keycode == XK_Escape)
 		close_handle(fr);
-	else if(keycode == XK_minus)
+	else if (keycode == XK_minus)
 	{
-		if(fr->ITERATIONS > 10)
+		if (fr->ITERATIONS > 10)
 			fr->ITERATIONS -= 10;
 	}
-	else if(keycode == XK_plus)
+	else if (keycode == XK_plus)
 		fr->ITERATIONS += 10;
-	else if(keycode == XK_Left)
+	else if (keycode == XK_Left)
 		fr->shiftx -= 0.3 * fr->scale;
-	else if(keycode == XK_Right)
+	else if (keycode == XK_Right)
 		fr->shiftx += 0.3 * fr->scale;
-	else if(keycode == XK_Up)
+	else if (keycode == XK_Up)
 		fr->shifty += 0.3 * fr->scale;
-	else if(keycode == XK_Down)
+	else if (keycode == XK_Down)
 		fr->shifty -= 0.3 * fr->scale;
 	render(fr);
 	return (0);
@@ -57,9 +53,9 @@ int	close_handle(t_fractol *fr)
 zoom out-down scroll == 4*/
 int	mouse_handle(int button, int x, int y, t_fractol *fr)
 {
-	if(button == Button5)
+	if (button == Button5)
 		fr->scale *= 1.05;
-	else if(button == Button4)
+	else if (button == Button4)
 		fr->scale *= 0.95;
 	(void)x;
 	(void)y;

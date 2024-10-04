@@ -6,7 +6,7 @@
 /*   By: ecortes- <ecortes-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 18:40:14 by ecortes-          #+#    #+#             */
-/*   Updated: 2024/10/04 17:04:40 by ecortes-         ###   ########.fr       */
+/*   Updated: 2024/10/04 17:17:30 by ecortes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,10 @@ size_t	ft_strlen(const char *str)
 	}
 	return (i);
 }
+
 void	ft_putstr_fd(char *s, int fd)
 {
-    write(fd, s, ft_strlen(s));
+	write(fd, s, ft_strlen(s));
 }
 
 int	ft_strcmp(char *s1, char *s2)
@@ -41,33 +42,35 @@ int	ft_strcmp(char *s1, char *s2)
 	}
 	return ((int)(unsigned char)s1[i] - (int)(unsigned char)s2[i]);
 }
-double	scale2(double unscaledNum, double new_min, double new_max, double old_max)
+
+double	scale2(double unscaledNum, double new_min, double new_max,
+				double old_max)
 {
-	return (new_max - new_min) * (unscaledNum - OLD_MIN)
-			/ (old_max - OLD_MIN) + new_min;
+	return ((new_max - new_min) * (unscaledNum - OLD_MIN)
+		/ (old_max - OLD_MIN) + new_min);
 }
 
 double	atoi_double(char *s)
 {
-	long integer;
-	double fraction;
-	double pow;
-	int sign;
+	long	integer;
+	double	fraction;
+	double	pow;
+	int		sign;
 
 	integer = 0;
 	fraction = 0;
 	sign = 1;
 	pow = 1;
-	while((*s >= 9 && *s <= 13) || *s == ' ')
+	while ((*s >= 9 && *s <= 13) || *s == ' ')
 		++s;
-	while(*s == '+' || *s == '-')
-		if(*s++ == '-')
+	while (*s == '+' || *s == '-')
+		if (*s++ == '-')
 			sign = -sign;
-	while(*s != '.' && *s)
+	while (*s != '.' && *s)
 		integer = (integer * 10) + (*s++ - '0');
-	if(*s == '.')
+	if (*s == '.')
 		++s;
-	while(*s)
+	while (*s)
 	{
 		pow /= 10;
 		fraction = fraction + (*s++ - 48) * pow;
