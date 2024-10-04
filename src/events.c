@@ -6,7 +6,7 @@
 /*   By: ecortes- <ecortes-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 14:21:28 by ecortes-          #+#    #+#             */
-/*   Updated: 2024/10/02 12:34:38 by ecortes-         ###   ########.fr       */
+/*   Updated: 2024/10/04 17:02:38 by ecortes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 //Prototype of event functions
 //las teclas https://www.cl.cam.ac.uk/~mgk25/ucs/keysymdef.h
-int key_handle(int keycode, t_fractol *fr)
+int	key_handle(int keycode, t_fractol *fr)
 {
 	if(keycode == XK_Escape)
 		close_handle(fr);
@@ -38,12 +38,11 @@ int key_handle(int keycode, t_fractol *fr)
 		fr->shifty += 0.3 * fr->scale;
 	else if(keycode == XK_Down)
 		fr->shifty -= 0.3 * fr->scale;
-
 	render(fr);
 	return (0);
 }
 
-int close_handle(t_fractol *fr)
+int	close_handle(t_fractol *fr)
 {
 	mlx_destroy_image(fr->mlx_conn, fr->img.img_ptr);
 	mlx_destroy_window(fr->mlx_conn, fr->mlx_window);
@@ -56,7 +55,7 @@ int close_handle(t_fractol *fr)
 
 /*zoom in-up scroll == 5
 zoom out-down scroll == 4*/
-int mouse_handle(int button, int x, int y, t_fractol *fr)
+int	mouse_handle(int button, int x, int y, t_fractol *fr)
 {
 	if(button == Button5)
 		fr->scale *= 1.05;

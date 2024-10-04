@@ -6,7 +6,7 @@
 /*   By: ecortes- <ecortes-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 16:42:12 by ecortes-          #+#    #+#             */
-/*   Updated: 2024/10/02 12:44:54 by ecortes-         ###   ########.fr       */
+/*   Updated: 2024/10/04 17:02:59 by ecortes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void events_init(t_fractol *fr)
     mlx_hook(fr->mlx_window, DestroyNotify, StructureNotifyMask, &close_handle, fr);
 }
 
-void data_init(t_fractol *fr)
+void    data_init(t_fractol *fr)
 {
     fr->ITERATIONS = ITERATIONS_DEF;
     fr->shiftx = 0.f;
@@ -41,7 +41,7 @@ static void malloc_error()
     exit(EXIT_FAILURE);
 }
 
-void fr_init(t_fractol *fr, char **argv)
+void    fr_init(t_fractol *fr, char **argv)
 {
     fr->mlx_conn = mlx_init();
     if(!fr->mlx_conn)

@@ -6,7 +6,7 @@
 /*   By: ecortes- <ecortes-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 18:40:14 by ecortes-          #+#    #+#             */
-/*   Updated: 2024/10/02 12:37:52 by ecortes-         ###   ########.fr       */
+/*   Updated: 2024/10/04 17:04:40 by ecortes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ double	scale2(double unscaledNum, double new_min, double new_max, double old_max
 			/ (old_max - OLD_MIN) + new_min;
 }
 
-double atoi_double(char *s)
+double	atoi_double(char *s)
 {
 	long integer;
 	double fraction;
