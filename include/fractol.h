@@ -10,7 +10,7 @@
 # include <unistd.h>
 #include <X11/X.h>
 #include <X11/keysym.h>
-#include "mlx.h"
+#include "../minilibx-linux/mlx.h"
 
 #define ERROR_MESSAGE "Arguments must be:\n\t./fractol mandelbrot\n\t./fractol julia <real> <imaginary>\n"
 
