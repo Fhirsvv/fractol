@@ -6,7 +6,7 @@
 /*   By: ecortes- <ecortes-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 16:42:12 by ecortes-          #+#    #+#             */
-/*   Updated: 2024/10/04 17:27:37 by ecortes-         ###   ########.fr       */
+/*   Updated: 2024/10/07 16:20:47 by ecortes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static	void	events_init(t_fractol *fr)
 
 void	data_init(t_fractol *fr)
 {
-	fr->ITERATIONS = ITERATIONS_DEF;
+	fr->iterations = ITERATIONS_DEF;
 	fr->shiftx = 0.f;
 	fr->shifty = 0.f;
 	fr->scale = 2.f;
@@ -72,15 +72,15 @@ void	calculate_colors(t_fractol *fr)
 	int	i;
 
 	i = -1;
-	if (fr->prev_iterations == fr->ITERATIONS)
+	if (fr->prev_iterations == fr->iterations)
 		return ;
-	fr->prev_iterations = fr->ITERATIONS;
+	fr->prev_iterations = fr->iterations;
 	if (fr->color_table)
 		free(fr->color_table);
-	fr->color_table = malloc(fr->ITERATIONS * sizeof(int));
+	fr->color_table = malloc(fr->iterations * sizeof(int));
 	if (!fr->color_table)
 		malloc_error();
-	while (++i < fr->ITERATIONS)
+	while (++i < fr->iterations)
 		fr->color_table[i] = scale2(i, COLOR_PSYCHEDLIC_PURPLE, COLOR_WHITE,
-				fr->ITERATIONS);
+				fr->iterations);
 }

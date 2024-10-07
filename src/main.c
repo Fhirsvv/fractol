@@ -6,22 +6,24 @@
 /*   By: ecortes- <ecortes-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 14:51:12 by edu               #+#    #+#             */
-/*   Updated: 2024/10/07 16:06:25 by ecortes-         ###   ########.fr       */
+/*   Updated: 2024/10/07 16:32:44 by ecortes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
 
-static int no_num(char c)
+static int	no_num(char c)
 {
-	if ((c >= 'a' && c <= 'z' )|| (c >= 'A' && c <= 'Z'))
+	if ((c >= 'a' && c <= 'z' ) || (c >= 'A' && c <= 'Z'))
+	{
 		return (1);
+	}
 	return (0);
 }
 
 static int	is_letterstr(int argc, char **argv)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (argc == 2)
@@ -34,6 +36,7 @@ static int	is_letterstr(int argc, char **argv)
 				return (1);
 			i++;
 		}
+		i = 0;
 		while (argv[3][i])
 		{
 			if (no_num(argv[3][i]))
@@ -49,8 +52,8 @@ int	main(int argc, char **argv)
 	t_fractol	fr;
 
 	if (((argc == 2 && ft_strcmp("mandelbrot", argv[1]) == 0)
-		|| (argc == 4 && ft_strcmp("julia", argv[1]) == 0))
-			&& !is_letterstr(argc, argv))
+			|| (argc == 4 && ft_strcmp("julia", argv[1]) == 0))
+		&& !is_letterstr(argc, argv))
 	{
 		fr_init(&fr, argv);
 		if (ft_strcmp("julia", argv[1]) == 0)

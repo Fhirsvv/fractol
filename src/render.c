@@ -6,7 +6,7 @@
 /*   By: ecortes- <ecortes-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 17:21:55 by ecortes-          #+#    #+#             */
-/*   Updated: 2024/10/04 17:28:24 by ecortes-         ###   ########.fr       */
+/*   Updated: 2024/10/07 16:16:35 by ecortes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	handle_pixel_julia(int x, int y, t_fractol *fr)
 	z.real = scale(x, -fr->scale, fr->scale, 799) + fr->shiftx;
 	z.imag = scale(y, fr->scale, -fr->scale, 799) + fr->shifty;
 	i = 0;
-	while (i < fr->ITERATIONS)
+	while (i < fr->iterations)
 	{
 		z = ft_mandelbrot(z, c);
 		if (z.imag_2 + z.real_2 > 4)
@@ -69,7 +69,7 @@ static void	handle_pixel_mandelbrot(int x, int y, t_fractol *fr)
 	c.imag = scale(y, fr->scale, -fr->scale, 799) + fr->shifty;
 	z.real = 0;
 	z.imag = 0;
-	while (i < fr->ITERATIONS)
+	while (i < fr->iterations)
 	{
 		z = ft_mandelbrot(z, c);
 		if (z.imag_2 + z.real_2 > 4)
