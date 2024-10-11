@@ -6,43 +6,38 @@
 /*   By: ecortes- <ecortes-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 14:51:12 by edu               #+#    #+#             */
-/*   Updated: 2024/10/07 16:32:44 by ecortes-         ###   ########.fr       */
+/*   Updated: 2024/10/11 12:42:11 by ecortes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
 
-static int	no_num(char c)
+static int	check_if_nb(char *str)
 {
-	if ((c >= 'a' && c <= 'z' ) || (c >= 'A' && c <= 'Z'))
-	{
+	int	i;	
+
+	if (!str)
 		return (1);
-	}
+	i = 0;
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	if (str[i] == '\0')
+		return (1);
+	while (str[i] && ((str[i] >= '0' && str[i] <= '9') || str[i] == '.'))
+		i++;
+	if (str[i] != '\0' && !(str[i] >= '0' && str[i] <= '9'))
+		return (1);
 	return (0);
 }
 
 static int	is_letterstr(int argc, char **argv)
 {
-	int	i;
-
-	i = 0;
 	if (argc == 2)
 		return (0);
 	else if (argc == 4)
 	{
-		while (argv[2][i])
-		{
-			if (no_num(argv[2][i]))
-				return (1);
-			i++;
-		}
-		i = 0;
-		while (argv[3][i])
-		{
-			if (no_num(argv[3][i]))
-				return (1);
-			i++;
-		}
+		if (check_if_nb(argv[2]) || check_if_nb (argv[3]))
+			return (1);
 	}
 	return (0);
 }
